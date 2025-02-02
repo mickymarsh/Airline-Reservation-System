@@ -1,5 +1,3 @@
-
-
 import { db } from "../config.js";
 
 export const getPasswordByEmail = async (email) => {

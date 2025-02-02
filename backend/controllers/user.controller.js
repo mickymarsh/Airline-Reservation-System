@@ -5,7 +5,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { getPasswordByEmail, insertUser } from "../models/user.model.js";
 
-export const signInUser = async (req, res) => {
+export const signInAdmin = async (req, res) => {
     try {
         const { email, password } = req.body;
         if (!email || !password) {
@@ -31,7 +31,7 @@ export const signInUser = async (req, res) => {
     }
 };
 
-export const signUpUser = async (req, res) => {
+export const signUpAdmin = async (req, res) => {
     const userData = req.body;
     try {
         const { first_name, last_name, email, password } = userData;
@@ -67,7 +67,7 @@ export const signUpUser = async (req, res) => {
     }
 };
 
-export const signOutUser = async (req, res) => {
+export const signOutAdmin = async (req, res) => {
     res.clearCookie("accessToken").send("Logged out");
 };
 
