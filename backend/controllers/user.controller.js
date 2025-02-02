@@ -49,7 +49,7 @@ export const signUpAdmin = async (req, res) => {
         const salt = bcrypt.genSaltSync(10);
         const hashedPassword = bcrypt.hashSync(password, salt);
 
-        const role = 'passenger'; // Default role
+        const role = 'admin'; // Default role
         const values = [first_name, last_name, email, hashedPassword, role];
 
         // Insert new user into the database
