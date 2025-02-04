@@ -24,7 +24,7 @@ export const signInAdmin = async (req, res) => {
 
         res.cookie("accessToken", token, {
             httpOnly: true
-        }).status(200).json(email);
+        }).status(200).json(email,token);
     } catch (error) {
         console.error("login error:", error);
         res.status(500).json({ error: "Internal Server Error" });
@@ -32,6 +32,7 @@ export const signInAdmin = async (req, res) => {
 };
 
 export const signUpAdmin = async (req, res) => {
+    const secretKey = process.env.JWT_SECRET;
     const userData = req.body;
     try {
         const { first_name, last_name, email, password } = userData;
@@ -55,7 +56,12 @@ export const signUpAdmin = async (req, res) => {
         // Insert new user into the database
         try {
             const addUser = await insertUser(...values);
-            return res.status(200).json("User created successfully");
+            const token = jwt.sign({ email }, secretKey, { expiresIn: "1h" });
+            // Send success response with token in an object
+            return res.status(200).json({
+                message: "User created successfully",
+                token: token // Sending the token as part of the response object
+            });
         } catch (err) {
             console.error("Error inserting user:", err);
             return res.status(500).json({ error: "Failed to create user", message: err.message });
@@ -71,6 +77,22 @@ export const signOutAdmin = async (req, res) => {
     res.clearCookie("accessToken").send("Logged out");
 };
 
+
+export const getUserName = async (req, res) => {
+    try {
+        const email = req.user.email; // Extract email from decoded token
+
+        const [rows] = await db.query("SELECT first_name FROM users WHERE email = ?", [email]);
+        if (rows.length === 0) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.json({ first_name: rows[0].first_name });
+    } catch (error) {
+        console.error("Error fetching user name:", error);
+        res.status(500).json({ message: "Server error", error });
+    }
+};
 
 // const { verifyToken } = require("../middleware/authMiddleware");
 
