@@ -23,11 +23,13 @@ const AdminSignUp = () => {
       const data = response.data;
       localStorage.setItem('token', data.token); // Save the token
       console.log('User registered successfully');
-        setSuccess('User registered successfully');
-        setTimeout(() => {
+      setSuccess('User registered successfully');
+       // Clear the success message after 5 seconds
+      setTimeout(() => {
         setSuccess('');
-            
-        }, 1000);
+        navigate('/adminLogin'); // Redirect to the homepage after 5 seconds
+      }, 1000);
+      
     } catch (err) {
     //   console.error(err);
         //setError(err.response ? err.response.data : err.message);
@@ -45,6 +47,7 @@ const AdminSignUp = () => {
       <h1>Admin Sign Up</h1>
       <AuthForm onSubmit={handleSignUp} isLogin={false} />
       {error && <p className="error">{error}</p>}
+      {success && <p className="success">{success}</p>}
     </div>
   );
 };
