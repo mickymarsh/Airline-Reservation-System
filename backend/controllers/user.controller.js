@@ -72,6 +72,26 @@ export const signOutAdmin = async (req, res) => {
 };
 
 
+// const { verifyToken } = require("../middleware/authMiddleware");
+
+// // Fetch admin's first name using email
+// router.get("/me", verifyToken, async (req, res) => {
+//   try {
+//     const email = req.user.email; // Extracted from token
+//     const [rows] = await pool.query("SELECT first_name FROM admins WHERE email = ?", [email]);
+
+//     if (rows.length === 0) {
+//       return res.status(404).json({ message: "Admin not found" });
+//     }
+
+//     res.json({ firstName: rows[0].first_name });
+//   } catch (error) {
+//     res.status(500).json({ message: "Server error", error });
+//   }
+// });
+
+// module.exports = router;
+
 
 
 
