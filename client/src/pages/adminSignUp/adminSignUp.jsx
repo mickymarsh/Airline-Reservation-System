@@ -15,10 +15,7 @@ const AdminSignUp = () => {
           'Content-Type': 'application/json',
         },
       });
-      console.log(response.data);
-    //   if (response.status !== 200) {
-    //     throw new Error('Signup failed');
-    //   }
+      
   
       const data = response.data;
       localStorage.setItem('token', data.token); // Save the token

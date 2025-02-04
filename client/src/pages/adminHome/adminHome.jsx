@@ -4,7 +4,7 @@ import AdminDashBoard from "../../components/adminDashboard/adminDashboard";
 import "./adminHome.css";
 import { useState, useEffect } from 'react';
 
-export default function Home() {
+const adminHome = ()=> {
     const [adminName, setAdminName] = useState('');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
@@ -56,3 +56,5 @@ export default function Home() {
         </>
     )
 }
+
+export default adminHome;
