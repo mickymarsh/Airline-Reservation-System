@@ -1,33 +1,45 @@
 import React, { useState } from 'react';
 import AuthForm from '../../components/authForm/authForm';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const AdminSignUp = () => {
   const navigate = useNavigate();
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState(''); // State to store success message
 
   const handleSignUp = async (formData) => {
     try {
-      const response = await fetch('user/signUpAdmin', {
-        method: 'POST',
+      const response = await axios.post('/user/signUpAdmin', formData, {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
       });
-
-      if (!response.ok) {
-        throw new Error('Signup failed');
-      }
-
-      const data = await response.json();
+      console.log(response.data);
+    //   if (response.status !== 200) {
+    //     throw new Error('Signup failed');
+    //   }
+  
+      const data = response.data;
       localStorage.setItem('token', data.token); // Save the token
-      navigate('/'); // Redirect to the home page
+      console.log('User registered successfully');
+        setSuccess('User registered successfully');
+        setTimeout(() => {
+        setSuccess('');
+            
+        }, 1000);
     } catch (err) {
-      setError(err.message);
+    //   console.error(err);
+        //setError(err.response ? err.response.data : err.message);
+        console.error(err);
+        setError(err.response ? err.response.data : err.message);
+      // Automatically clear the error message after 5 seconds
+        setTimeout(() => {
+        setError('');
+        }, 1000);
     }
   };
-
+  
   return (
     <div className="auth-page">
       <h1>Admin Sign Up</h1>

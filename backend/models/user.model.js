@@ -5,6 +5,7 @@ export const getPasswordByEmail = async (email) => {
     try {
         const [rows] = await db.query(query, [email]);
         if (rows.length === 0) {
+            console.log(rows);
             return null;
         }
         return rows[0];

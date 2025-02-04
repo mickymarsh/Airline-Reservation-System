@@ -3,8 +3,8 @@ import './authForm.css';
 
 const AuthForm = ({ onSubmit, isLogin }) => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
+    first_name: '',
+    last_name: '',
     email: '',
     password: '',
   });
@@ -25,17 +25,17 @@ const AuthForm = ({ onSubmit, isLogin }) => {
         <>
           <input
             type="text"
-            name="firstName"
+            name="first_name"
             placeholder="First Name"
-            value={formData.firstName}
+            value={formData.first_name}
             onChange={handleChange}
             required
           />
           <input
             type="text"
-            name="lastName"
+            name="last_name"
             placeholder="Last Name"
-            value={formData.lastName}
+            value={formData.last_name}
             onChange={handleChange}
             required
           />
