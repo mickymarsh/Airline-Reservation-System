@@ -29,46 +29,62 @@ const ImageSlider = () => {
   return (
     <>
       {/* Navbar with background color */}
-      <div className="bg-blue-900 text-white py-2 px-4 w-full shadow-lg">
-        <div className="flex justify-between items-center">
-          {/* Left Side - Title */}
-          <span className="text-sm font-semibold">Airline Reservation System</span>
+<div className="bg-blue-900 text-white py-2 px-4 w-full shadow-lg">
+  <div className="flex justify-between items-center">
+    {/* Left Side - Title and Admin Link */}
+    <div className="flex items-center gap-6"> {/* Added gap for spacing */}
+      <Link to="/">
+        <span className="text-lg font-bold">MC Airlines</span> {/* Larger and bolder */}
+      </Link>
+      <Link to="/">
+        <span className="text-sm font-semibold opacity-80 hover:opacity-100">
+          Are you an admin?
+        </span> {/* Smaller and slightly faded */}
+      </Link>
+    </div>
 
-          {/* Right Side - Buttons */}
-          <div className="flex space-x-2">
-            <button className="bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded-md text-xs">
-              Add Booking
-            </button>
+    {/* Right Side - Buttons */}
+    <div className="flex space-x-2">
+      <button className="bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded-md text-xs">
+        Add Booking
+      </button>
 
-            <Link to="/Login">
-              <button className="bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded-md text-xs">
-                Login
-              </button>
-            </Link>
+      <Link to="/Login">
+        <button className="bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded-md text-xs">
+          Login
+        </button>
+      </Link>
 
-            <Link to="/Register">
-              <button className="bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded-md text-xs">
-                Register
-              </button>
-            </Link>
+      <Link to="/Register">
+        <button className="bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded-md text-xs">
+          Register
+        </button>
+      </Link>
 
-            <button className="bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded-md text-xs">
-              Settings
-            </button>
+      <Link to="/Dashboard">
+        <button className="bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded-md text-xs">
+          Dashboard
+        </button>
+      </Link>
 
-            <Link to="/">
-              <button className="bg-black hover:bg-gray-800 px-3 py-1 rounded-md text-xs">
-                Logout
-              </button>
-            </Link>
-          </div>
-        </div>
-      </div>
+      <button className="bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded-md text-xs">
+        Settings
+      </button>
+
+      <Link to="/">
+        <button className="bg-black hover:bg-gray-800 px-3 py-1 rounded-md text-xs">
+          Logout
+        </button>
+      </Link>
+    </div>
+  </div>
+</div>
+
 
       {/* Main Heading Section with Background Color */}
       <div className="bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-500 text-center py-8" >
         <h1 className="text-4xl font-bold text-white leading-tight">
-          Welcome to Airline Reservation System
+          Welcome to MC Airlines
         </h1>
       </div>
 

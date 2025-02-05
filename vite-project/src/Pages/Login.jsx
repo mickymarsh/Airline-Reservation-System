@@ -27,7 +27,7 @@ function Login() {
           const response = await axios.post("http://localhost:8800/api/Login/login", inputs);
           console.log(response.data); // Log the response data from the API
           console.log("data went successfull")
-          navigate("/");
+          navigate("/Dashboard");
         } catch (err) {
           console.log("Error:", err.response?.data || err); // Log any error response
           setErr(err.response?.data || "An error occurred");
