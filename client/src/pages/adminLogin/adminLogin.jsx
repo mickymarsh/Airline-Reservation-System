@@ -22,7 +22,7 @@ const AdminLogin = () => {
 
       const data = await response.json();
       localStorage.setItem('token', data.token); // Save the token
-      navigate('/'); // Redirect to the home page
+      navigate('/adminHome/:email'); // Redirect to the home page
     } catch (err) {
       setError(err.message);
     }

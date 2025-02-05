@@ -13,7 +13,7 @@ export const signInAdmin = async (req, res) => {
         if ( !result) {
             return res.status(404).json("User Not Found");
         };
-        const checkPassword = bcrypt.compareSync(password, result.password);
+        const checkPassword = bcrypt.compare(password, result.password);
         if (!checkPassword) {
             return res.status(400).json("Wrong Password");
         };
@@ -22,7 +22,7 @@ export const signInAdmin = async (req, res) => {
 
         res.cookie("accessToken", token, {
             httpOnly: true
-        }).status(200).json(email,token);
+        }).status(200).json({ email, token });
     } catch (error) {
         console.error("login error:", error);
         res.status(500).json({ error: "Internal Server Error" });
@@ -80,7 +80,7 @@ export const getUserName = async (req, res) => {
     try {
         const email = req.user.email; // Extract email from decoded token
 
-        const [rows] = await db.query("SELECT first_name FROM users WHERE email = ?", [email]);
+        const [rows] = await db.query("SELECT first_name FROM user WHERE email = ?", [email]);
         if (rows.length === 0) {
             return res.status(404).json({ message: "User not found" });
         }
