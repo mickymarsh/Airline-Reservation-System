@@ -1,6 +1,8 @@
+import React from "react"
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useState } from "react";
+import {  useContext, useState } from "react";
+import { AuthContext } from "../context/Authcontext.jsx"; 
 
 function Login() {
 
@@ -18,14 +20,15 @@ function Login() {
     const [err, setErr] = useState(null);
   
     const navigate = useNavigate();
+
+    const { login } = useContext(AuthContext);
   
     const handleClick = async (e) => {
         e.preventDefault(); // Prevent form submission
         console.log("Inputs before sending:", inputs);
       
         try {
-          const response = await axios.post("http://localhost:8800/api/Login/login", inputs);
-          console.log(response.data); // Log the response data from the API
+          await login(inputs)
           console.log("data went successfull")
           navigate("/Dashboard");
         } catch (err) {
