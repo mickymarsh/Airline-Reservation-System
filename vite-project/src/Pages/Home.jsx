@@ -1,9 +1,20 @@
 import { Link, useNavigate } from "react-router-dom";
 import Slider from "react-slick";
+import React, { useContext } from "react";
+import { AuthContext } from "../context/Authcontext.jsx";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const ImageSlider = () => {
+
+  const { logout } = useContext(AuthContext); // Access the logout function from AuthContext
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout(); // Call the logout function to clear currentUser from state and localStorage
+    navigate("/"); // Redirect the user to the login page after logging out
+  };
+
   const settings = {
     dots: true,
     infinite: true,
@@ -72,7 +83,7 @@ const ImageSlider = () => {
       </button>
 
       <Link to="/">
-        <button className="bg-black hover:bg-gray-800 px-3 py-1 rounded-md text-xs">
+        <button onClick={handleLogout} className="bg-black hover:bg-gray-800 px-3 py-1 rounded-md text-xs">
           Logout
         </button>
       </Link>

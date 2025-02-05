@@ -30,7 +30,7 @@ function Login() {
         try {
           await login(inputs)
           console.log("data went successfull")
-          navigate("/Dashboard");
+          navigate("/");
         } catch (err) {
           console.log("Error:", err.response?.data || err); // Log any error response
           setErr(err.response?.data || "An error occurred");
