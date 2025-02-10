@@ -1,0 +1,93 @@
+/* .auth-page {
+    background-image: url('../../../public/assets/backgroundPlane.jpeg');
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+  } */
+  
+  .auth-page {
+    background-image: url('../../../public/assets/background2.jpeg');
+    background-size: cover; /* Ensures the image covers the entire container */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+  }
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 300px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .auth-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .auth-form button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .auth-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .error {
+    color: red;
+    margin-top: 10px;
+  }
+  .auth-form-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .auth-links {
+    margin-top: 15px;
+  }
+  
+  .auth-link {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .auth-link:hover {
+    text-decoration: underline;
+  }
+  
+  .auth-link-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 80%; /* Make it smaller relative to the parent container */
+    max-width: 300px; /* Ensure it doesn’t get too wide */
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px auto; /* Center it within the parent container */
+    font-size: 14px; /* Reduce font size for a more compact look */
+  }
+  

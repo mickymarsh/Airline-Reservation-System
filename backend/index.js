@@ -1,27 +1,25 @@
-import express from "express"
-import cors from "cors"
-import cookieParser from "cookie-parser"
+import express from "express";
 
-const app = express()
+const app = express();
 
-import loginRoutes from "./routes/login.js"
-import registerRoutes from "./routes/register.js"
+import userRoutes from "./routes/user.route.js";
 
-app.use(express.json())
-app.use(cors(
-    {origin: "http://localhost:3000",
-        credentials: true,
-    }
-))
-app.use(cookieParser())
+import cors from "cors";
+import cookieParser from "cookie-parser";
 
-app.use("/api/Login", loginRoutes)
-app.use("/api", registerRoutes)
 
-app.get("/", (req, res) => {
-    res.send("Welcome to the API!");
+//middleware
+app.use(express.json());
+app.use(cookieParser());
+app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials: true
+}));
+
+app.use("/backend/user", userRoutes);
+
+app.listen(4000, () => {
+    console.log("Backend server is running")
 });
 
-app.listen(8800, ()=>{
-    console.log("Connected to BackEnd!")
-})
+
