@@ -56,9 +56,12 @@ const ImageSlider = () => {
 
     {/* Right Side - Buttons */}
     <div className="flex space-x-2">
+      <Link to="/Search">
       <button className="bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded-md text-xs">
         Add Booking
       </button>
+      </Link>
+      
 
       <Link to="/Login">
         <button className="bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded-md text-xs">
