@@ -51,7 +51,7 @@ const AdminHome = ()=> {
 
     return (
         <>
-            <AdminNavBar  />
+            <AdminNavBar  adminName={adminName}  />
             <AdminDashBoard />
         </>
     )

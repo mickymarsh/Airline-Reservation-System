@@ -49,7 +49,11 @@ const AdminNavBar = () => {
           Switch to Statistics
         </button>
         <div className="admin-profile">
-          <span className="admin-name">{user.first_name}</span>
+          {user ? (
+            <span className="admin-name">{user.first_name}</span>
+          ) : (
+            <span className="loading">Loading...</span>  // Display "Loading..." or an alternative message
+          )}
         </div>
       </div>
     </nav>
