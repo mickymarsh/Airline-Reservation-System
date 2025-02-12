@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AuthForm from '../../components/authForm/authForm';
 import { useNavigate } from 'react-router-dom';
+import ForgotPassword from '../../components/forgotPassword/forgotPassword';
 
 const AdminLogin = () => {
   const navigate = useNavigate();
@@ -33,6 +34,7 @@ const AdminLogin = () => {
       <h1>Admin Login</h1>
       <AuthForm onSubmit={handleLogin} isLogin={true} />
       {error && <p className="error">{error}</p>}
+      <ForgotPassword/>
     </div>
   );
 };
