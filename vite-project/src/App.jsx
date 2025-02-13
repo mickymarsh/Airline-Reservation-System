@@ -4,6 +4,7 @@ import Register from "./Pages/Register";
 import Home from "./Pages/Home";
 import Error from "./Pages/Error";
 import Dashboard from "./Pages/Dashboard";
+import Search from "./Pages/Search";
 import { AuthContext } from "./context/Authcontext.jsx"; 
 import { useContext } from "react";
 
@@ -40,6 +41,10 @@ function App(){
       {
         path: "/error",
         element: <Error/>,
+      },
+      {
+        path: "/search",
+        element: <Search/>,
       },
       {
         path: "/dashboard",
