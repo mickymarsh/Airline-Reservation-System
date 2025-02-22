@@ -1,21 +1,17 @@
 import React from 'react';
-import FlightSearch from '../../components/authForm/authForm';
-//import { useNavigate } from 'react-router-dom';
-//import axios from 'axios';
-//,UserNavBar
+import UserNavBar from '../../components/userNavBar/userNavBar.jsx';
+import FlightSearchForm from '../../components/flightSearch/flightSearch.jsx';
+import './flightBooking.css';
 
 const FlightBooking = () => {
-    const handleSearch = (searchParams) => {
-        console.log('Search Parameters:', searchParams);
-        // Here you would typically make an API call or update the state to reflect the search results
-      };
-    
-      return (
-        <div className="dashboard-container">
-          <h1>B Airwayz Dashboard</h1>
-          <FlightSearch onSearch={handleSearch} />
-        </div>
-      );
-}
+  return (
+    <div className="flight-booking">
+      <UserNavBar />
+      <div className="hero">
+        <FlightSearchForm />
+      </div>
+    </div>
+  );
+};
 
 export default FlightBooking;

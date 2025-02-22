@@ -5,8 +5,6 @@ import AdminLogin from './pages/adminLogin/adminLogin.jsx';
 import FlightBooking from './pages/flightBooking/flightBooking.jsx';
 //import AdminHomePage from './pages/adminHome/adminHome.jsx';
 
-
-
 import {
     BrowserRouter as Router,
     Route,

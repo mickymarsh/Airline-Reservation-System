@@ -1,69 +1,47 @@
 import React, { useState } from 'react';
-import { TextField, Button, Container, Grid } from '@mui/material';
 import './flightSearch.css';
 
-const FlightSearch = ({ onSearch }) => {
-  const [source, setSource] = useState('');
-  const [destination, setDestination] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+
+const FlightSearchForm = () => {
+  const [formData, setFormData] = useState({
+    source: '',
+    destination: '',
+    startDate: '',
+    endDate: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSearch({ source, destination, startDate, endDate });
+    console.log('Searching flights for:', formData);
   };
 
   return (
-    <Container>
-      <form onSubmit={handleSubmit}>
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              fullWidth
-              label="Source"
-              value={source}
-              onChange={(e) => setSource(e.target.value)}
-              placeholder="Enter source"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              fullWidth
-              label="Destination"
-              value={destination}
-              onChange={(e) => setDestination(e.target.value)}
-              placeholder="Enter destination"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              fullWidth
-              label="Start Date"
-              type="date"
-              InputLabelProps={{ shrink: true }}
-              value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              fullWidth
-              label="End Date"
-              type="date"
-              InputLabelProps={{ shrink: true }}
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <Button type="submit" variant="contained" color="primary">
-              Search Flights
-            </Button>
-          </Grid>
-        </Grid>
+    <div className="search-container">
+      <form className="search-form" onSubmit={handleSubmit}>
+        <div className="input-group">
+          <label>Source</label>
+          <input type="text" name="source" placeholder="Enter source" value={formData.source} onChange={handleChange} required />
+        </div>
+        <div className="input-group">
+          <label>Destination</label>
+          <input type="text" name="destination" placeholder="Enter destination" value={formData.destination} onChange={handleChange} required />
+        </div>
+        <div className="input-group">
+          <label>Start Date</label>
+          <input type="date" name="startDate" value={formData.startDate} onChange={handleChange} required />
+        </div>
+        <div className="input-group">
+          <label>End Date</label>
+          <input type="date" name="endDate" value={formData.endDate} onChange={handleChange} required />
+        </div>
+        <button type="submit" className="search-button">Search Flights</button>
       </form>
-    </Container>
+    </div>
   );
 };
 
-export default FlightSearch;
+export default FlightSearchForm;
