@@ -4,26 +4,19 @@ import Register from "./Pages/Register";
 import Home from "./Pages/Home";
 import Error from "./Pages/Error";
 import Dashboard from "./Pages/Dashboard";
+import Seat from "./Pages/Seat.jsx"
 import Search from "./Pages/Search";
-import { AuthContext } from "./context/Authcontext.jsx"; 
-import { useContext } from "react";
+
+
+import { FlightProvider } from "./context/Fliightcontext.jsx";
 
 
 
 
 function App(){
 
-  const { currentUser } = useContext(AuthContext);
 
-  const Protectedlayout = ({children}) =>
-    {
-      if(!currentUser){
-        return(<Navigate to="/error"></Navigate>);
-      }
-      else{
-        return children;
-      }
-    }
+  
 
     const router = createBrowserRouter([
       {
@@ -47,18 +40,17 @@ function App(){
         element: <Search/>,
       },
       {
-        path: "/dashboard",
-        element: (
-          <Protectedlayout>
-            <Dashboard />
-          </Protectedlayout>
-        ),
+        path: "/seat",
+        element: <Seat/>,
       },
+      
     ]);
     
 
   return(
-    <RouterProvider router={router} />
+    <FlightProvider>
+      <RouterProvider router={router} />
+    </FlightProvider>
   );
 }
 

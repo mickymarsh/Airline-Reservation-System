@@ -75,9 +75,9 @@ const ImageSlider = () => {
         </button>
       </Link>
 
-      <Link to="/Dashboard">
+      <Link to="/">
         <button className="bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded-md text-xs">
-          Dashboard
+          Home
         </button>
       </Link>
 
