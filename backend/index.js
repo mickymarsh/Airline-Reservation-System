@@ -7,6 +7,8 @@ const app = express()
 import loginRoutes from "./routes/login.js"
 import registerRoutes from "./routes/register.js"
 import searchRoutes from "./routes/search.js"
+import seatRoutes from "./routes/seat.js"
+
 
 app.use(express.json())
 app.use(cors(
@@ -19,6 +21,8 @@ app.use(cookieParser())
 app.use("/api/Login", loginRoutes)
 app.use("/api", registerRoutes)
 app.use("/api", searchRoutes)
+app.use("/api", seatRoutes)
+
 
 app.get("/", (req, res) => {
     res.send("Welcome to the API!");
