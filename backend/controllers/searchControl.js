@@ -33,18 +33,34 @@ export const search = (req, res) => {
 
 
 export const getFlightId = (req, res) => {
-  const { source, destination, startDate, endDate } = req.body;
+  const { source, destination, startDate, endDate } = req.query;
 
-  const query = `SELECT flightId FROM flights WHERE 
-                 source = ? AND destination = ? 
-                 AND startDate = ? AND endDate = ? LIMIT 1`;
+  console.log("Received GET params:", source, destination, startDate, endDate);
+  
 
-  db.query(query, [source, destination, startDate, endDate], (err, results) => {
-    if (err) return res.status(500).json({ error: "Database error" });
-    if (results.length === 0) return res.json({ flightId: null });
-    res.json({ flightId: results[0].flightId });
+  const query = `SELECT s.aircraft_id
+FROM schedule s
+JOIN route r ON s.route_id = r.route_id
+WHERE r.source_code = ?
+  AND r.destination_code = ?
+  AND DATE(s.departure_time) BETWEEN ? AND ?
+  AND DATE(s.arrival_time) BETWEEN ? AND ?;
+`;
+
+  // Pass startDate and endDate twice to match the 6 placeholders
+  db.query(query, [source, destination, startDate, endDate, startDate, endDate], (err, results) => {
+    if (err) {
+      console.error("Database error:", err);
+      return res.status(500).json({ error: "Database error" });
+    }
+    if (results.length == 0) return res.json({ flightId: null});
+
+    // Access the correct field name
+    res.json({ flightId: results[0].aircraft_id });
+    
   });
 };
+
 
 
 

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useFlight } from "../context/Fliightcontext";
 
 function Search() {
   
@@ -47,12 +48,26 @@ function Search() {
       }
     };
   
-    const handleSearch = () => {
-      console.log(source_code);
-      console.log(destination_code);
-      console.log(startDate);
-      console.log(endDate);
+    const { setFlightId } = useFlight();
+
+    const handleSearch = async () => {
+      try {
+        console.log("Values:", source_code, destination_code, startDate, endDate);
+        const url = `http://localhost:8800/api/getFlightId?source=${source_code}&destination=${destination_code}&startDate=${startDate}&endDate=${endDate}`
+
+        const response = await fetch( url, {
+          headers: {"Content-Type": "application/json"}}
+        );
+        console.log("Fetching URL:", url);
+
+        const data = await response.json();
+        console.log("Flight ID:", data.flightId);
+        setFlightId(data.flightId);
+      } catch (error) {
+        console.error("Error fetching flight ID:", error);
+      }
     };
+
   
     return (
       <div className="bg-gray-100 min-h-screen"> {/* Added background color and full screen height */}
@@ -79,9 +94,9 @@ function Search() {
             </button>
           </Link>
   
-          <Link to="/Dashboard">
+          <Link to="/">
             <button className="bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded-md text-xs">
-              Dashboard
+              Home
             </button>
           </Link>
   
@@ -171,12 +186,14 @@ function Search() {
         />
       </div>
   
+      <Link to="/seat">
       <button
         onClick={handleSearch}
         className="w-full py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-indigo-400" // Adjusted button color to green
       >
         Search Flight
       </button>
+      </Link>
     </div>
   </div>
   
