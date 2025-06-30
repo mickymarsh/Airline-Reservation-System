@@ -1,14 +1,17 @@
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useFlight } from "../context/Fliightcontext";  // Adjust path
+import { Link } from 'react-router-dom';
 
 
 const SeatSelection = () => {
     const [seats, setSeats] = useState([]);
-    const [selectedSeats, setSelectedSeats] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);  // Add error state
 
-    const { flightId, scheduleId } = useFlight();
+    const { flightId, scheduleId, selectedSeats, setSelectedSeats } = useFlight();
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchSeats = async () => {
@@ -17,7 +20,6 @@ const SeatSelection = () => {
                 const response = await fetch(`http://localhost:8800/api/seatlist?schedule_id=${scheduleId}`);
                 if (!response.ok) throw new Error('Failed to fetch seats');
                 const data = await response.json();
-                console.log("Fetched seat data:", data);
                 setSeats(data);
                 setLoading(false);
             } catch (err) {
@@ -31,8 +33,6 @@ const SeatSelection = () => {
 
     if (loading) return <div className="text-center py-8">Loading seats...</div>;
     if (error) return <div className="text-center py-8 text-red-600">Error: {error}</div>;
-
-    console.log(seats)
 
     const handleSeatClick = (seat) => {
         if (seat.seat_status !== "Available") return;
@@ -48,7 +48,33 @@ const SeatSelection = () => {
             }
             setSelectedSeats([...selectedSeats, seat]);
         }
+
     };
+
+    const handleReservation = async () => {
+        try {
+            for (let i = 0; i < selectedSeats.length; i++) {
+                const seat = selectedSeats[i];
+                const response = await fetch("http://localhost:8800/api/reservation", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        p_Schedule_id: scheduleId,
+                        p_Seat_No: seat.seat_no,
+                    }),
+                });
+
+                if (!response.ok) throw new Error(`Failed to reserve seat ${seat.seat_no}`);
+            }
+
+            alert("All seats reserved successfully!");
+        } catch (error) {
+            console.error("Reservation error:", error);
+            alert("Failed to reserve one or more seats.");
+        }
+    };
+
+
 
     // Group seats into rows of 8 (4 left, 4 right)
     const groupSeatsIntoRows = (seats) => {
@@ -142,10 +168,14 @@ const SeatSelection = () => {
 
             {selectedSeats.length > 0 && (
                 <div className="mt-8 text-center">
-                    <button className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors font-medium">
-                        Continue with {selectedSeats.length} Selected Seat{selectedSeats.length !== 1 ? 's' : ''}
+                    <Link to= '/booking'>
+                    <button 
+                    onClick={handleReservation}
+                    className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors font-medium">
+                        Continue with {selectedSeats.length} Selected Seat{selectedSeats.length !== 1 ? 's' : ''} {selectedSeats.map(seat => seat.seat_no).join(', ')} 
                     </button>
-                </div>
+                    </Link>
+                </div> 
             )}
         </div>
     );

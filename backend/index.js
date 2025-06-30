@@ -8,6 +8,7 @@ import loginRoutes from "./routes/login.js"
 import registerRoutes from "./routes/register.js"
 import searchRoutes from "./routes/search.js"
 import seatRoutes from "./routes/seat.js"
+import reserveRoutes from "./routes/reserve.js"
 
 
 app.use(express.json())
@@ -22,6 +23,7 @@ app.use("/api/Login", loginRoutes)
 app.use("/api", registerRoutes)
 app.use("/api", searchRoutes)
 app.use("/api", seatRoutes)
+app.use("/api", reserveRoutes)
 
 
 app.get("/", (req, res) => {
