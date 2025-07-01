@@ -6,6 +6,7 @@ import Error from "./Pages/Error";
 import Seat from "./Pages/Seat.jsx"
 import Search from "./Pages/Search";
 import Booking from "./Pages/Booking"
+import Reciept from './Pages/Reciept.jsx';
 
 
 import { FlightProvider } from "./context/Fliightcontext.jsx";
@@ -47,6 +48,10 @@ function App(){
         path: "/booking",
         element: <Booking/>,
       },
+      {
+        path: "/receipt",
+        element: <Reciept/>,
+      }
       
     ]);
     

@@ -93,6 +93,10 @@ const SeatSelection = () => {
         return rows;
     };
 
+    const handleClearSelection = () => {
+        setSelectedSeats([]);
+    };
+
     const seatRows = groupSeatsIntoRows(seats);
 
     if (loading) return <div className="text-center py-8">Loading seats...</div>;
@@ -108,10 +112,23 @@ const SeatSelection = () => {
                     Select up to <span className="font-bold text-blue-600">3 seats</span>
                 </p>
                 {selectedSeats.length > 0 && (
+                    <>
                     <p className="text-blue-600 mt-2 font-medium">
                         Selected: {selectedSeats.map(s => s.seat_no).join(', ')}
                     </p>
+                    <button 
+                            onClick={handleClearSelection} 
+                            className="mt-2 text-sm text-red-600 underline hover:text-red-800"
+                        >
+                            Clear Selected Seats
+                        </button>
+                    </>
+                    
+                    
                 )}
+                <p className="text-sm text-gray-500 mt-2 italic">
+                    ⚠️ Pending seats will be automatically released if booking is not made within 15 minutes.
+                </p>
             </div>
 
             {/* Seat Layout */}
