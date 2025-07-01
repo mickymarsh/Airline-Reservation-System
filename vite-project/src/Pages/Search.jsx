@@ -48,7 +48,7 @@ function Search() {
       }
     };
   
-    const { setFlightId } = useFlight();
+    const { setFlightId, setScheduleId, flightId, scheduleId } = useFlight();
 
     const handleSearch = async () => {
       try {
@@ -62,7 +62,11 @@ function Search() {
 
         const data = await response.json();
         console.log("Flight ID:", data.flightId);
+        console.log("Schedule ID:", data.scheduleId);
         setFlightId(data.flightId);
+        setScheduleId(data.scheduleId);
+        console.log("set Flight ID:", flightId);
+        console.log("set Schedule ID:", scheduleId);
       } catch (error) {
         console.error("Error fetching flight ID:", error);
       }

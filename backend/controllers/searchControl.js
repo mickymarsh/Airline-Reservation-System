@@ -38,7 +38,7 @@ export const getFlightId = (req, res) => {
   console.log("Received GET params:", source, destination, startDate, endDate);
   
 
-  const query = `SELECT s.aircraft_id
+  const query = `SELECT s.schedule_id, s.aircraft_id
 FROM schedule s
 JOIN route r ON s.route_id = r.route_id
 WHERE r.source_code = ?
@@ -53,10 +53,10 @@ WHERE r.source_code = ?
       console.error("Database error:", err);
       return res.status(500).json({ error: "Database error" });
     }
-    if (results.length == 0) return res.json({ flightId: null});
+    if (results.length == 0) return res.json({ scheduleId: null, flightId: null});
 
     // Access the correct field name
-    res.json({ flightId: results[0].aircraft_id });
+    res.json({ scheduleId: results[0].schedule_id, flightId: results[0].aircraft_id });
     
   });
 };

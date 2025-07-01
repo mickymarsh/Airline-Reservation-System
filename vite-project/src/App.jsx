@@ -3,9 +3,10 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Home from "./Pages/Home";
 import Error from "./Pages/Error";
-import Dashboard from "./Pages/Dashboard";
 import Seat from "./Pages/Seat.jsx"
 import Search from "./Pages/Search";
+import Booking from "./Pages/Booking"
+import Reciept from './Pages/Reciept.jsx';
 
 
 import { FlightProvider } from "./context/Fliightcontext.jsx";
@@ -43,6 +44,14 @@ function App(){
         path: "/seat",
         element: <Seat/>,
       },
+      {
+        path: "/booking",
+        element: <Booking/>,
+      },
+      {
+        path: "/receipt",
+        element: <Reciept/>,
+      }
       
     ]);
     
