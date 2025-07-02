@@ -1,4 +1,4 @@
-import { db } from "../config.js";
+import  db  from "../connect.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { getPasswordByEmail, insertUser } from "../models/user.model.js";

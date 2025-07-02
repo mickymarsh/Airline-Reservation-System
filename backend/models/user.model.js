@@ -1,4 +1,4 @@
-import { db } from "../config.js";
+import { db } from "../connect.js";
 
 export const getPasswordByEmail = async (email) => {
     const query = "SELECT password FROM user WHERE email = ?";

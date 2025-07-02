@@ -29,18 +29,14 @@ app.use("/backend/user", userRoutes);
 
 
 
-app.use("/api/Login", loginRoutes)
-app.use("/api", registerRoutes)
-app.use("/api", searchRoutes)
+// app.use("/api/Login", loginRoutes)
+// app.use("/api", registerRoutes)
+// app.use("/api", searchRoutes)
 
 
 app.get("/", (req, res) => {
     res.send("Welcome to the API!");
 });
-// app.listen(4000, () => {
-//     console.log("Backend server is running")
-// });
-
 
 
 
