@@ -8,6 +8,7 @@ const AdminDashboard = () => {
         <button className="dashboard-button">Add Flights</button>
         <button className="dashboard-button">Add Aircrafts</button>
         <button className="dashboard-button">Add Routes</button>
+        <button className="dashboard-button">Update Service Date of Aircraft</button>
       </div>
     </div>
   );
