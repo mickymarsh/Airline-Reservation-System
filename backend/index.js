@@ -10,7 +10,7 @@ import cookieParser from "cookie-parser";
 
 
 import userRoutes from "./routes/user.route.js";
-import routeRoutes from "./routes/routes.route.js";
+import adminRoutes from "./routes/admin.route.js";
 
 
 
@@ -23,7 +23,7 @@ app.use(cors({
 }));
 
 app.use("/backend/user", userRoutes);
-app.use("/backend/routes", routeRoutes);
+app.use("/backend/admin", adminRoutes);
 
 
 
