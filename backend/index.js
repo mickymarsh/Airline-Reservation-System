@@ -10,11 +10,8 @@ import cookieParser from "cookie-parser";
 
 
 import userRoutes from "./routes/user.route.js";
+import routeRoutes from "./routes/routes.route.js";
 
-
-import loginRoutes from "./routes/login.js"
-import registerRoutes from "./routes/register.js"
-import searchRoutes from "./routes/search.js"
 
 
 //middleware
@@ -26,6 +23,7 @@ app.use(cors({
 }));
 
 app.use("/backend/user", userRoutes);
+app.use("/backend/routes", routeRoutes);
 
 
 

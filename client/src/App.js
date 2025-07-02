@@ -2,7 +2,7 @@ import React from 'react';
 import AdminHome from './pages/adminHome/adminHome.jsx';
 import AdminSignUp from './pages/adminSignUp/adminSignUp.jsx';
 import AdminLogin from './pages/adminLogin/adminLogin.jsx';
-import FlightBooking from './pages/flightBooking/flightBooking.jsx';
+import AddRoutesPage from './pages/addRoutes/addRoutes.jsx';
 //import AdminHomePage from './pages/adminHome/adminHome.jsx';
 
 import {
@@ -16,10 +16,11 @@ function App() {
         <Router>
             <Routes>
                 <Route path="/" element={<AdminLogin />} />
-                <Route path="/adminHome/:email" element={<AdminHome/>} />
+                <Route path="/adminHome/:email" element={<AdminHome />} />
+                <Route path="/adminHome/:email/addRoute" element={<AddRoutesPage />} />
+                
                 <Route path="/adminSignUp" element={<AdminSignUp />} />
                 <Route path="/adminLogin" element={<AdminLogin />} />
-                <Route path="/flightBooking" element={<FlightBooking />} />
             </Routes>
         </Router>
          
