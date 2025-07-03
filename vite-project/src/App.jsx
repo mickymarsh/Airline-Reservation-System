@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { BrowserRouter as Router, Route, Routes, RouterProvider, createBrowserRouter, Outlet, Navigate } from 'react-router-dom';
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
@@ -9,6 +11,16 @@ import Booking from "./Pages/Booking"
 import Reciept from './Pages/Reciept.jsx';
 import History from './Pages/History.jsx';
 
+//CHATHU
+
+import AdminHome from '../../client/src/pages/adminHome/adminHome.jsx';
+import AddAircraftPage from '../../client/src/pages/addAircraft/addAircraft.jsx';
+import AddRoutesPage from '../../client/src/pages/addRoutes/addRoutes.jsx';
+import AddFlightPage from '../../client/src/pages/addFlight/addFlight.jsx';
+import AdminSignUp from '../../client/src/pages/adminSignUp/adminSignUp.jsx';
+import StatisticsPage from '../../client/src/pages/viewStatistics/statistics.jsx';
+import UpdateAircraftPage from '../../client/src/pages/updateAircraftServiceDate/updateServiceDate.jsx';
+import AdminLogin from '../../client/src/pages/adminLogin/adminLogin.jsx';
 
 import { FlightProvider } from "./context/Fliightcontext.jsx";
 import { AuthContextProvider } from './context/Authcontext.jsx';
@@ -57,7 +69,16 @@ function App(){
       {
         path: "/history",
         element: <History/>,
-      }
+      },
+      {path : "/adminHome", element: <AdminLogin />},
+      {path : "/adminHome/:email", element: <AdminHome />},
+      {path : "/adminHome/:email/addRoute", element: <AddRoutesPage />},
+      {path : "/adminHome/:email/addAircraft", element: <AddAircraftPage />},
+      {path : "/adminHome/:email/updateAircraftServiceDate", element: <UpdateAircraftPage />},
+      {path : "/adminHome/:email/statistics", element: <StatisticsPage/>},
+      {path : "/adminHome/:email/addFlight", element: <AddFlightPage/>},
+      {path : "/adminSignUp", element: <AdminSignUp />},
+      {path : "/adminLogin", element: <AdminLogin />}
       
     ]);
     

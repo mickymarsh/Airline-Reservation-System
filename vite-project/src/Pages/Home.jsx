@@ -48,7 +48,7 @@ const ImageSlider = () => {
       <Link to="/">
         <span className="text-lg font-bold">MC Airlines</span> {/* Larger and bolder */}
       </Link>
-      <Link to="/">
+      <Link to="/adminHome">
         <span className="text-sm font-semibold opacity-80 hover:opacity-100">
           Are you an admin?
         </span> {/* Smaller and slightly faded */}
