@@ -1,5 +1,3 @@
-
-
 import express from "express";
 
 const app = express();
@@ -7,10 +5,9 @@ const app = express();
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
-
-
 import userRoutes from "./routes/user.route.js";
 import adminRoutes from "./routes/admin.route.js";
+import statisticRoutes from "./routes/statistics.route.js";
 
 
 
@@ -24,6 +21,7 @@ app.use(cors({
 
 app.use("/backend/user", userRoutes);
 app.use("/backend/admin", adminRoutes);
+app.use("/backend/statistics", statisticRoutes);
 
 
 

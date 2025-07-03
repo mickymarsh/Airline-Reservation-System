@@ -36,6 +36,24 @@ export const insertAircraft = async (brand,model,last_service_date,purchase_date
 };
 
 
+export const updateServiceDate = async (last_service_date,brand,model) => {
+    const query = "UPDATE aircraft SET last_service_date = ? WHERE brand = ? AND model = ?";
+
+    const values = [
+        last_service_date,  
+        brand,
+        model
+    ];
+
+    try {
+        const result = await db.execute(query, values);
+        return result;
+    } catch (err) {
+        console.log("Database error during update:", err);
+        throw err; // Rethrow the error to be handled by the caller
+    }
+};
+
 
 
 
