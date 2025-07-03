@@ -15,7 +15,7 @@ const AddAircraftPage = () => {
             try {
                 console.log("Token:", localStorage.getItem('token'));
 
-                const response = await fetch('http://localhost:4000/backend/user/getUserName', {
+                const response = await fetch('http://localhost:8800/backend/user/getUserName', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ const AddAircraftPage = () => {
 
     const handleAddAircraft = async (aircraftData) => {
         try {
-            const response = await fetch('http://localhost:4000/backend/admin/addAircraft', {
+            const response = await fetch('http://localhost:8800/backend/admin/addAircraft', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

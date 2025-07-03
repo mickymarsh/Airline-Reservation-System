@@ -23,7 +23,7 @@ import reserveRoutes from "./routes/reserve.js"
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: ['http://localhost:3000', 'http://localhost:3001'],
     credentials: true
 }));
 
@@ -50,7 +50,7 @@ app.get("/", (req, res) => {
 
 
 
-app.listen(4000, ()=>{
+app.listen(8800, ()=>{
     console.log("Connected to BackEnd!")
 })
 

@@ -22,7 +22,7 @@ const ChildrenInFlight = () => {
         try {
             console.log('Fetching children data for flight:', flightNumber);
 
-            const response = await fetch('http://localhost:4000/backend/statistics/flight_children_ids', {
+            const response = await fetch('http://localhost:8800/backend/statistics/flight_children_ids', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
