@@ -3,27 +3,23 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Home from "./Pages/Home";
 import Error from "./Pages/Error";
-import Dashboard from "./Pages/Dashboard";
+import Seat from "./Pages/Seat.jsx"
 import Search from "./Pages/Search";
-import { AuthContext } from "./context/Authcontext.jsx"; 
-import { useContext } from "react";
+import Booking from "./Pages/Booking"
+import Reciept from './Pages/Reciept.jsx';
+import History from './Pages/History.jsx';
+
+
+import { FlightProvider } from "./context/Fliightcontext.jsx";
+import { AuthContextProvider } from './context/Authcontext.jsx';
 
 
 
 
 function App(){
 
-  const { currentUser } = useContext(AuthContext);
 
-  const Protectedlayout = ({children}) =>
-    {
-      if(!currentUser){
-        return(<Navigate to="/error"></Navigate>);
-      }
-      else{
-        return children;
-      }
-    }
+  
 
     const router = createBrowserRouter([
       {
@@ -47,18 +43,31 @@ function App(){
         element: <Search/>,
       },
       {
-        path: "/dashboard",
-        element: (
-          <Protectedlayout>
-            <Dashboard />
-          </Protectedlayout>
-        ),
+        path: "/seat",
+        element: <Seat/>,
       },
+      {
+        path: "/booking",
+        element: <Booking/>,
+      },
+      {
+        path: "/receipt",
+        element: <Reciept/>,
+      },
+      {
+        path: "/history",
+        element: <History/>,
+      }
+      
     ]);
     
 
   return(
-    <RouterProvider router={router} />
+    <AuthContextProvider>
+      <FlightProvider>
+        <RouterProvider router={router} />
+      </FlightProvider>
+    </AuthContextProvider>
   );
 }
 
