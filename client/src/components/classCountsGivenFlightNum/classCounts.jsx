@@ -20,7 +20,7 @@ const ClassCounts = () => {
         setClassDetails(null);
 
         try {
-            const response = await fetch('http://localhost:4000/backend/statistics/flight_class_details', {
+            const response = await fetch('http://localhost:8800/backend/statistics/flight_class_details', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

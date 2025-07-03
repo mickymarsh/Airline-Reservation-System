@@ -31,7 +31,7 @@ const AddFlightForm = ({ onSubmit }) => {
         try {
             console.log('Adding flight', formData);
 
-            const response = await fetch('http://localhost:4000/backend/admin/addFlight', {
+            const response = await fetch('http://localhost:8800/backend/admin/addFlight', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
