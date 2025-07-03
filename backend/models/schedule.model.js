@@ -1,5 +1,45 @@
 import { db } from "../connect.js";
 
+export const insertFlight = async (route_id, aircraft_id, departure_time, arrival_time, status, economy_price, business_price, platinum_price, flight_number) => {
+    const query = "insert into schedule(route_id, aircraft_id,departure_time,arrival_time,status,economy_price,business_price,platinum_price,flight_number) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    const values = [
+        route_id,
+        aircraft_id,
+        departure_time,
+        arrival_time,
+        status,
+        economy_price,
+        business_price,
+        platinum_price,
+        flight_number
+    ];
+
+    try {
+        const result = await db.execute(query, values);
+        return result;
+    } catch (err) {
+        console.log("Database error during insert:", err);
+        throw err; // Rethrow the error to be handled by the caller
+    }
+};
+
+export const getNextFlightNumber = async () => {
+    const query = "SELECT COUNT(schedule_id) as count FROM schedule";
+    try {
+        const [rows] = await db.query(query);
+        if (rows.length === 0) {
+            console.log(rows);
+            return 0;
+        }
+        return rows[0].count; // Return just the count value
+    } catch (err) {
+        console.log("Database error:", err);
+        throw err;
+    }
+};
+
+
 // Get passenger count by class for a given route and date range
 export const getFlightEconomyClassCount = async (flight_number) => {
     const query = `
@@ -70,3 +110,4 @@ export const getPassengerChildIDs = async (flight_number) => {
         throw err;
     }
 };
+

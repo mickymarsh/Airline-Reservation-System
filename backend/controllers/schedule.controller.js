@@ -3,16 +3,38 @@ import { getFlightEconomyClassCount, getFlightBusinessClassCount, getFlightPlati
 
 export const getFlightClassDetails = async (req, res) => {
     try {
-        const flightNumber = req.user.flight_number;
+        // Get flight number from request body
+        const { flight_number } = req.body;
 
-        const [economy_class_seats] = await getFlightEconomyClassCount(flightNumber);
-        const [business_class_seats] = await getFlightBusinessClassCount(flightNumber);
-        const [platinum_class_seats] = await getFlightPlatinumClassCount(flightNumber);
+        if (!flight_number) {
+            return res.status(400).json({
+                success: false,
+                message: "Flight number is required"
+            });
+        }
 
+        const economy_class_seats = await getFlightEconomyClassCount(flight_number);
+        const business_class_seats = await getFlightBusinessClassCount(flight_number);
+        const platinum_class_seats = await getFlightPlatinumClassCount(flight_number);
+
+        // Send response with the class details
+        res.status(200).json({
+            success: true,
+            flight_number: flight_number,
+            class_details: {
+                economy_class_count: economy_class_seats,
+                business_class_count: business_class_seats,
+                platinum_class_count: platinum_class_seats
+            }
+        });
 
     } catch (error) {
         console.error("Error fetching flight details:", error);
-        res.status(500).json({ message: "Server error", error });
+        res.status(500).json({ 
+            success: false,
+            message: "Server error", 
+            error: error.message 
+        });
     }
 }
 
