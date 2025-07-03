@@ -22,10 +22,13 @@ const AdminDashboard = () => {
     navigate(`/adminHome/${email}/statistics`);
   };
 
+  const handleAddFlight = () => {
+    navigate(`/adminHome/${email}/addFlight`);
+  };
   return (
     <div className="admin-dashboard">
       <div className="dashboard-container">
-        <button className="dashboard-button">Add Flights</button>
+        <button className="dashboard-button" onClick={handleAddFlight}>Add Flights</button>
         <button className="dashboard-button" onClick={handleAddAircraft}>Add Aircrafts</button>
         <button className="dashboard-button" onClick={handleAddRoutes}>Add Routes</button>
         <button className="dashboard-button" onClick={handleUpdateServiceDate}>Update Service Date of Aircraft</button>
