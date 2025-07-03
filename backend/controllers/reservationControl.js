@@ -106,3 +106,33 @@ export const bookings = (req, res) => {
         }
     );
 };
+
+export const history = (req, res) => {
+    const { email } = req.query;
+
+    if (!email) {
+        return res.status(400).json({ message: "Email is required." });
+    }
+
+    db.query(
+        `SELECT b.*
+        FROM booking b
+        JOIN user u ON b.passenger_id = u.passenger_id
+        WHERE u.email = ?;`,
+        [email],
+        (err, results) => {
+            if (err) {
+                console.error("Error fetching user info:", err);
+                return res.status(500).json({ message: "Server error." });
+            }
+
+            if (results.length === 0) {
+                return res.status(404).json({ message: "Bookings not found." });
+            }
+
+            res.json(results); // Return user info
+            console.log(results)
+            console.log("fetching booking history successfull")
+        }
+    );
+};
