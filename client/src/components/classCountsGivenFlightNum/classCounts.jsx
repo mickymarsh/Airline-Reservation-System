@@ -106,31 +106,31 @@ const ClassCounts = () => {
                             <div className="class-card economy">
                                 <div className="class-icon">✈️</div>
                                 <h4>Economy Class</h4>
-                                <div className="seat-count">{classDetails.economy_class_seats}</div>
-                                <p>Available Seats</p>
+                                <div className="seat-count">{classDetails.economy_class_count}</div>
+                                <p>Booked Seats</p>
                             </div>
 
                             <div className="class-card business">
                                 <div className="class-icon">🥂</div>
                                 <h4>Business Class</h4>
-                                <div className="seat-count">{classDetails.business_class_seats}</div>
-                                <p>Available Seats</p>
+                                <div className="seat-count">{classDetails.business_class_count}</div>
+                                <p>Booked Seats</p>
                             </div>
 
                             <div className="class-card platinum">
                                 <div className="class-icon">👑</div>
                                 <h4>Platinum Class</h4>
-                                <div className="seat-count">{classDetails.platinum_class_seats}</div>
-                                <p>Available Seats</p>
+                                <div className="seat-count">{classDetails.platinum_class_count}</div>
+                                <p>Booked Seats</p>
                             </div>
                         </div>
 
                         <div className="total-seats">
                             <strong>
-                                Total Seats: {
-                                    classDetails.economy_class_seats +
-                                    classDetails.business_class_seats +
-                                    classDetails.platinum_class_seats
+                                Total Booked Seats: {
+                                    classDetails.economy_class_count +
+                                    classDetails.business_class_count +
+                                    classDetails.platinum_class_count
                                 }
                             </strong>
                         </div>
