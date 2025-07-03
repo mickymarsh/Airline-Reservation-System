@@ -1,38 +1,50 @@
 .admin-dashboard {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #7d98a1; /* Background color similar to the image */
-  }
-  
-  .dashboard-container {
-    background-color: #d3d3d3; /* Light gray background */
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    border: 2px solid #3a75a1; /* Border similar to the image */
-  }
-  
-  .dashboard-button {
-    background-color: #1e2a3a; /* Dark button color */
-    color: white;
-    font-size: 18px;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    width: 250px;
-    text-align: center;
-    font-weight: bold;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .dashboard-button:hover {
-    background-color: #2e3b4d;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.dashboard-container {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  transition: transform 0.3s ease;
+}
+
+.dashboard-container:hover {
+  transform: translateY(-5px);
+}
+
+.dashboard-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-size: 18px;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  width: 250px;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.dashboard-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+}
+
+.dashboard-button:active {
+  transform: translateY(0);
+}

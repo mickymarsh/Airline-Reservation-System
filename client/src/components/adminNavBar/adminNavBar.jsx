@@ -2,11 +2,13 @@ import React from 'react';
 import './adminNavBar.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate, useParams } from "react-router-dom";
 
 
 const AdminNavBar = () => {
   const [user, setUser] = useState(null);
-
+  const navigate = useNavigate();
+  const { email } = useParams();
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -35,6 +37,10 @@ const AdminNavBar = () => {
     alert('Switching to Statistics View');
     // Add logic to switch to passenger view
   };
+  const handleGotoAdminHome = () => {
+    navigate(`/adminHome/${email}`);
+    alert('Switching to Admin Home');
+  };
   return (
     <nav className="admin-navbar">
       <div className="navbar-logo">
@@ -42,6 +48,9 @@ const AdminNavBar = () => {
         <span>B Airways</span>
       </div>
       <div className="navbar-actions">
+        <button onClick={handleGotoAdminHome} className="switch-button">
+          Admin Home
+        </button>
         <button onClick={handleSwitchToPassenger} className="switch-button">
           Switch to Passenger
         </button>
