@@ -14,7 +14,7 @@ const AdminNavBar = () => {
       try {
         const token = localStorage.getItem("token");
         console.log('Token', token);
-        const response = await axios.get('http://localhost:4000/backend/user/getUserName', {
+        const response = await axios.get('http://localhost:8800/backend/user/getUserName', {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,

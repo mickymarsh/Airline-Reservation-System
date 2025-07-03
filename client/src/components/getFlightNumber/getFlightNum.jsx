@@ -13,7 +13,7 @@ const GetFlightNumber = () => {
         try {
             console.log('Fetching flight count from API...');
 
-            const response = await fetch('http://localhost:4000/backend/admin/getFlightCount', {
+            const response = await fetch('http://localhost:8800/backend/admin/getFlightCount', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
