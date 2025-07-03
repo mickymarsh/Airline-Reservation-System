@@ -4,6 +4,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../context/Authcontext.jsx";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import SettingsPopup from "../components/settingsButton.jsx";
 
 const ImageSlider = () => {
 
@@ -81,9 +82,8 @@ const ImageSlider = () => {
         </button>
       </Link>
 
-      <button className="bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded-md text-xs">
-        Settings
-      </button>
+
+      <SettingsPopup></SettingsPopup>
 
       <Link to="/">
         <button onClick={handleLogout} className="bg-black hover:bg-gray-800 px-3 py-1 rounded-md text-xs">

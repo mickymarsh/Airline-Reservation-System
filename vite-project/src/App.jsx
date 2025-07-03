@@ -7,9 +7,11 @@ import Seat from "./Pages/Seat.jsx"
 import Search from "./Pages/Search";
 import Booking from "./Pages/Booking"
 import Reciept from './Pages/Reciept.jsx';
+import History from './Pages/History.jsx';
 
 
 import { FlightProvider } from "./context/Fliightcontext.jsx";
+import { AuthContextProvider } from './context/Authcontext.jsx';
 
 
 
@@ -51,15 +53,21 @@ function App(){
       {
         path: "/receipt",
         element: <Reciept/>,
+      },
+      {
+        path: "/history",
+        element: <History/>,
       }
       
     ]);
     
 
   return(
-    <FlightProvider>
-      <RouterProvider router={router} />
-    </FlightProvider>
+    <AuthContextProvider>
+      <FlightProvider>
+        <RouterProvider router={router} />
+      </FlightProvider>
+    </AuthContextProvider>
   );
 }
 

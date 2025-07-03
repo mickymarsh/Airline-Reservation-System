@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useFlight } from "../context/Fliightcontext";
+import SettingsPopup from "../components/settingsButton.jsx";
+
 
 function Search() {
   
@@ -103,10 +105,8 @@ function Search() {
               Home
             </button>
           </Link>
-  
-          <button className="bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded-md text-xs">
-            Settings
-          </button>
+
+          <SettingsPopup></SettingsPopup>
   
           <Link to="/">
             <button className="bg-black hover:bg-gray-800 px-3 py-1 rounded-md text-xs">
