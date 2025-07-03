@@ -2,6 +2,7 @@ import React from 'react';
 import AdminNavBar from '../../components/adminNavBar/adminNavBar';
 import ClassCounts from '../../components/classCountsGivenFlightNum/classCounts';
 import './statistics.css';
+import ChildrenInFlight from '../../components/childrenInFlight/childrenInFlight';
 
 const Statistics = () => {
     return (
@@ -13,6 +14,7 @@ const Statistics = () => {
                     <p>View detailed passenger statistics for specific flights</p>
                 </div>
                 <ClassCounts />
+                <ChildrenInFlight/>
             </div>
         </div>
     );

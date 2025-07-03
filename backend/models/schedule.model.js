@@ -51,3 +51,22 @@ export const getFlightPlatinumClassCount = async (flight_number) => {
         throw err;
     }
 };
+
+export const getPassengerChildIDs = async (flight_number) => {
+    const query = `
+        SELECT passenger_details.passenger_id
+        FROM booking 
+        LEFT JOIN passenger_details ON passenger_details.passenger_id = booking.passenger_id
+        LEFT JOIN schedule ON schedule.schedule_id = booking.schedule_id
+        WHERE schedule.flight_number = ? AND get_passenger_age(passenger_details.passenger_id) < 18;
+        `;
+
+    try {
+        const [rows] = await db.query(query, [flight_number]);
+        // Return array of passenger IDs, not count
+        return rows.map(row => row.passenger_id);
+    } catch (err) {
+        console.log("Database error:", err);
+        throw err;
+    }
+};

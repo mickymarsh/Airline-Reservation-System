@@ -1,7 +1,23 @@
 import db from "../connect.js";
-import { getFlightEconomyClassCount, getFlightBusinessClassCount, getFlightPlatinumClassCount } from "../models/schedule.model.js";
+import { getFlightEconomyClassCount, getFlightBusinessClassCount, getFlightPlatinumClassCount,getPassengerChildIDs } from "../models/schedule.model.js";
 
-export const getFlightClassDetails = async (req, res) => {
+export const getFlightClassDetails = async (req, res) => { 
+    try {
+        const flightNumber = req.user.flight_number; 
+
+        const [economy_class_seats] = await getFlightEconomyClassCount(flightNumber);
+        const [business_class_seats] = await getFlightBusinessClassCount(flightNumber);
+        const [platinum_class_seats] = await getFlightPlatinumClassCount(flightNumber);
+        
+        
+    } catch (error) {
+        console.error("Error fetching flight details:", error);
+        res.status(500).json({ message: "Server error", error });
+    }
+}
+
+
+export const getChildPassengerIDs = async (req, res) => {
     try {
         // Get flight number from request body
         const { flight_number } = req.body;
@@ -13,23 +29,16 @@ export const getFlightClassDetails = async (req, res) => {
             });
         }
 
-        const economy_class_seats = await getFlightEconomyClassCount(flight_number);
-        const business_class_seats = await getFlightBusinessClassCount(flight_number);
-        const platinum_class_seats = await getFlightPlatinumClassCount(flight_number);
-
-        // Return class count details in order: economy, business, platinum
+        const children = await getPassengerChildIDs(flight_number);
+        
+        // Return only the data without wrapper
         res.status(200).json({
-            success: true,
-            flight_number: flight_number,
-            class_details: {
-                economy_class_seats: economy_class_seats,
-                business_class_seats: business_class_seats,
-                platinum_class_seats: platinum_class_seats
-            }
+            children_passenger_ids: children,
+            total_children: children.length
         });
 
     } catch (error) {
-        console.error("Error fetching flight details:", error);
+        console.error("Error fetching child passenger IDs:", error);
         res.status(500).json({ 
             success: false, 
             message: "Server error", 
