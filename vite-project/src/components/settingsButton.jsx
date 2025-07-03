@@ -6,14 +6,14 @@ function SettingsPopup() {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef();
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
   const handleClick = (path) => {
-    if (user) {
+    if (currentUser) {
       navigate(path);
     } else {
       navigate("/error");
