@@ -9,7 +9,7 @@ const AdminLogin = () => {
 
   const handleLogin = async (formData) => {
     try {
-      const response = await fetch('/user/signInAdmin', {
+      const response = await fetch('http://localhost:8800/backend/user/signInAdmin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

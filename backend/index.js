@@ -8,6 +8,7 @@ import cookieParser from "cookie-parser";
 import userRoutes from "./routes/user.route.js";
 import adminRoutes from "./routes/admin.route.js";
 import statisticRoutes from "./routes/statistics.route.js";
+import routesRoutes from "./routes/routes.route.js";
 
 
 
@@ -31,6 +32,7 @@ app.use(cors({
 app.use("/backend/user", userRoutes);
 app.use("/backend/admin", adminRoutes);
 app.use("/backend/statistics", statisticRoutes);
+app.use("/backend/routes", routesRoutes);
 
 
 
