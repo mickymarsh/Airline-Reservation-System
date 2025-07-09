@@ -12,15 +12,15 @@ import Reciept from './Pages/Reciept.jsx';
 import History from './Pages/History.jsx';
 
 //CHATHU
-
-import AdminHome from '../../client/src/pages/adminHome/adminHome.jsx';
-import AddAircraftPage from '../../client/src/pages/addAircraft/addAircraft.jsx';
-import AddRoutesPage from '../../client/src/pages/addRoutes/addRoutes.jsx';
-import AddFlightPage from '../../client/src/pages/addFlight/addFlight.jsx';
-import AdminSignUp from '../../client/src/pages/adminSignUp/adminSignUp.jsx';
-import StatisticsPage from '../../client/src/pages/viewStatistics/statistics.jsx';
-import UpdateAircraftPage from '../../client/src/pages/updateAircraftServiceDate/updateServiceDate.jsx';
-import AdminLogin from '../../client/src/pages/adminLogin/adminLogin.jsx';
+import AdminHome from './client/pages/adminHome/adminHome.jsx'
+//import AdminHome from '../../client/src/pages/adminHome/adminHome.jsx';
+import AddAircraftPage from './client/pages/addAircraft/addAircraft.jsx';
+import AddRoutesPage from './client/pages/addRoutes/addRoutes.jsx';
+import AddFlightPage from './client/pages/addFlight/addFlight.jsx';
+import AdminSignUp from './client/pages/adminSignUp/adminSignUp.jsx';
+import StatisticsPage from './client/pages/viewStatistics/statistics.jsx';
+import UpdateAircraftPage from './client/pages/updateAircraftServiceDate/updateServiceDate.jsx';
+import AdminLogin from './client/pages/adminLogin/adminLogin.jsx';
 
 import { FlightProvider } from "./context/Fliightcontext.jsx";
 import { AuthContextProvider } from './context/Authcontext.jsx';
